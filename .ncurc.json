@@ -1,0 +1,5 @@
+{
+  "upgrade": true,
+  "filter": "",
+  "reject": ["sass-loader", "stylus-loader", "eslint", "style-loader"]
+}
