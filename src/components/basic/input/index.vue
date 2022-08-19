@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed } from 'vue'
 
 export default defineComponent({
   name: 'BasicInput',
@@ -22,37 +22,37 @@ export default defineComponent({
   props: {
     modelValue: {
       type: [String, Number],
-      default: '',
+      default: ''
     },
     isFull: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
     const bindValue = computed({
       get: () => props.modelValue,
-      set: (value) => emit('update:modelValue', value),
-    });
+      set: (value) => emit('update:modelValue', value)
+    })
     const isPrefix = computed(() => {
       if (slots['prefix']) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
-    });
+    })
     const isSuffix = computed(() => {
       if (slots['suffix']) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
-    });
-    console.log('slots :>> ', slots);
-    return { bindValue, isPrefix, isSuffix };
-  },
-});
+    })
+    console.log('slots :>> ', slots)
+    return { bindValue, isPrefix, isSuffix }
+  }
+})
 </script>
 
 <style lang="scss">

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed } from 'vue'
 
 export default defineComponent({
   name: 'my-button',
@@ -13,43 +13,43 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      required: true,
+      required: true
     },
     primary: {
       type: Boolean,
-      default: false,
+      default: false
     },
     size: {
       type: String,
       validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
-      },
+        return ['small', 'medium', 'large'].indexOf(value) !== -1
+      }
     },
     backgroundColor: {
-      type: String,
-    },
+      type: String
+    }
   },
 
   emits: ['click'],
 
   setup(props, { emit }) {
-    props = reactive(props);
+    props = reactive(props)
     return {
       classes: computed(() => ({
         'storybook-button': true,
         'storybook-button--primary': props.primary,
         'storybook-button--secondary': !props.primary,
-        [`storybook-button--${props.size || 'medium'}`]: true,
+        [`storybook-button--${props.size || 'medium'}`]: true
       })),
       style: computed(() => ({
-        backgroundColor: props.backgroundColor,
+        backgroundColor: props.backgroundColor
       })),
       onClick() {
-        emit('click');
-      },
-    };
-  },
-});
+        emit('click')
+      }
+    }
+  }
+})
 </script>
 
 <style lang="scss">

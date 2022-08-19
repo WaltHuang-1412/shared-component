@@ -1,23 +1,23 @@
-import BasicInput from './index.vue';
+import BasicInput from './index.vue'
 
 interface test {
-  args: object;
+  args: object
 }
 
 export default {
-  title: 'Example/Form/Input',
-  component: BasicInput,
-};
+  title: 'Basic/Form/Input',
+  component: BasicInput
+}
 
 const Template = (args: any) => ({
   components: { BasicInput },
   setup() {
-    return { args };
+    return { args }
   },
-  template: '<basic-input v-bind="args" />',
-});
+  template: '<basic-input v-bind="args" />'
+})
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 // Default.args = {
 //   primary: true,
 //   label: 'Input',
