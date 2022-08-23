@@ -21,7 +21,10 @@ module.exports = {
         endOfLine: 'auto',
         singleQuote: true
       }
-    ]
+    ],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-unused-vars': 'off'
   },
   overrides: [
     {

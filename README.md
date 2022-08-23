@@ -32,3 +32,11 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Before NPM publish step
+```
+1. yarn lib:build
+2. yarn tsc
+3. yarn tsc:build
+```
