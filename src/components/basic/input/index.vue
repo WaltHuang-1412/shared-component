@@ -49,7 +49,6 @@ export default defineComponent({
         return false
       }
     })
-    console.log('slots :>> ', slots)
     return { bindValue, isPrefix, isSuffix }
   }
 })

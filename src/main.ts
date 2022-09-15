@@ -3,6 +3,7 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-import component from './components/index'
+import 'element-plus/dist/index.css'
+import { registerGlobalApp } from '@/global'
 
-createApp(App).use(store).use(router).use(component).mount('#app')
+createApp(App).use(registerGlobalApp).use(store).use(router).mount('#app')

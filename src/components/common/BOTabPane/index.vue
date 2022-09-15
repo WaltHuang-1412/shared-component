@@ -1,18 +1,18 @@
 <template lang="pug">
-div Hello World
+el-tab-pane.bo-tab-pane(v-bind="$attrs")
+  slot
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'HelloWorld',
-  components: {},
+  name: 'BOTabPane',
+  inheritAttrs: false,
   setup() {
     return {}
   }
 })
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style lang="scss"></style>

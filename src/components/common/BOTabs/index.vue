@@ -2,6 +2,7 @@
 el-tabs.bo-tabs(:type="type" v-bind="$attrs" :data-type="styleType")
   slot
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({

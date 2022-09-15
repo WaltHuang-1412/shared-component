@@ -1,19 +1,37 @@
 import { App } from 'vue'
 
-const requireComponents = require.context(
-  // The relative path of the components folder
-  '@/components/common',
-  // Whether or not to look in sub folders
-  true,
-  // The regular expression used to match base component filenames
-  /[A-Z|a-z]\w+\.(vue|js|ts)$/
-)
+import BOTabs from './common/BOTabs/index.vue'
+import BOTable from './common/BOTableColumn/index.vue'
+import BOTableColumn from './common/BOTableColumn/index.vue'
+import BOInput from './common/BOInput/index.vue'
+import BOTabPane from './common/BOTabPane/index.vue'
+import BOButton from './common/BOButton/index.vue'
+import BODatePicker from './common/BODatePicker/index.vue'
+
+const BOComponents = [
+  BOTabs,
+  BOTable,
+  BOTableColumn,
+  BOInput,
+  BOTabPane,
+  BOButton,
+  BODatePicker
+]
 
 export default {
   install: (app: App) => {
-    requireComponents.keys().forEach((file) => {
-      const component = requireComponents(file).default
-      app.component(component.name, component)
-    })
+    for (const BOComponent of BOComponents) {
+      app.component(BOComponent.name, BOComponent)
+    }
   }
+}
+
+export {
+  BOTabs,
+  BOTable,
+  BOTableColumn,
+  BOInput,
+  BOTabPane,
+  BOButton,
+  BODatePicker
 }

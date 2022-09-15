@@ -3,7 +3,15 @@ module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack: {
     output: {
-      libraryExport: 'default'
+      libraryExport: 'default',
+      assetModuleFilename: 'images/[hash][ext]'
     }
+  },
+  chainWebpack: (config) => {
+    config.module.rule('images').set('parser', {
+      dataUrlCondition: {
+        maxSize: 4 * 1024 // 4KiB
+      }
+    })
   }
 })
