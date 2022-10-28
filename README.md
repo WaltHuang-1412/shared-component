@@ -43,8 +43,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Webpack4
 ```
+import BackOfficeComponent from 'back-office-component/src/components'
+Vue.use(BackOfficeComponent)
 ```
 
 ### Webpack5
 ```
+import BackOfficeComponent from 'back-office-component'
+Vue.use(BackOfficeComponent)
 ```

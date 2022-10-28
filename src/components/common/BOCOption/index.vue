@@ -1,12 +1,13 @@
-<template>
-  <div></div>
+<template lang="pug">
+el-option(v-bind="$attrs")
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 export default defineComponent({
-  name: 'App',
-  components: {},
+  name: 'BOCOption',
+  inheritAttrs: false,
   setup() {
     return {}
   }

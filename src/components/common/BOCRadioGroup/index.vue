@@ -1,12 +1,13 @@
-<template>
-  <div></div>
+<template lang="pug">
+ElRadioGroup.boc-radio-group(v-bind="$attrs")
+  slot
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 export default defineComponent({
-  name: 'App',
-  components: {},
+  name: 'BOCRadioGroup',
   setup() {
     return {}
   }

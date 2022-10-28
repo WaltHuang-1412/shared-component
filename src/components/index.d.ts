@@ -1,13 +1,17 @@
 import { App } from 'vue';
-import BOTabs from './common/BOTabs/index.vue';
-import BOTable from './common/BOTableColumn/index.vue';
-import BOTableColumn from './common/BOTableColumn/index.vue';
-import BOInput from './common/BOInput/index.vue';
-import BOTabPane from './common/BOTabPane/index.vue';
-import BOButton from './common/BOButton/index.vue';
-import BODatePicker from './common/BODatePicker/index.vue';
+import BOCButton from './common/BOCButton/index.vue';
+import BOCDatePicker from './common/BOCDatePicker/index.vue';
+import BOCInput from './common/BOCInput/index.vue';
+import BOCOption from './common/BOCOption/index.vue';
+import BOCRadio from './common/BOCRadio/index.vue';
+import BOCRadioGroup from './common/BOCRadioGroup/index.vue';
+import BOCSelect from './common/BOCSelect/index.vue';
+import BOCTable from './common/BOCTableColumn/index.vue';
+import BOCTableColumn from './common/BOCTableColumn/index.vue';
+import BOCTabPane from './common/BOCTabPane/index.vue';
+import BOCTabs from './common/BOCTabs/index.vue';
 declare const _default: {
     install: (app: App) => void;
 };
 export default _default;
-export { BOTabs, BOTable, BOTableColumn, BOInput, BOTabPane, BOButton, BODatePicker };
+export { BOCButton, BOCDatePicker, BOCInput, BOCOption, BOCRadio, BOCRadioGroup, BOCSelect, BOCTable, BOCTableColumn, BOCTabPane, BOCTabs };

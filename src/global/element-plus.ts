@@ -5,7 +5,11 @@ import {
   ElTable,
   ElTableColumn,
   ElButton,
-  ElInput
+  ElInput,
+  ElRadio,
+  ElRadioGroup,
+  ElSelect,
+  ElOption
 } from 'element-plus'
 
 const elementComponents = [
@@ -14,7 +18,11 @@ const elementComponents = [
   ElTable,
   ElTableColumn,
   ElButton,
-  ElInput
+  ElInput,
+  ElRadio,
+  ElRadioGroup,
+  ElSelect,
+  ElOption
 ]
 
 export function registerElementPlus(app: App<Element>) {
