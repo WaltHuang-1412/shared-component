@@ -1,5 +1,5 @@
 <template lang="pug">
-a-date-picker(v-bind="$attrs" v-model:value="renderDateValue" class="bo-date-picker")
+a-date-picker(v-bind="$attrs" v-model:value="renderDateValue" class="boc-date-picker")
   template(
     v-for="(slot, slotName) in $slots"
     #[slotName]="scoped"
@@ -10,6 +10,7 @@ a-date-picker(v-bind="$attrs" v-model:value="renderDateValue" class="bo-date-pic
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { DatePicker } from 'ant-design-vue'
 
 export default defineComponent({
   name: 'BOCDatePicker',
@@ -19,6 +20,9 @@ export default defineComponent({
       type: [String, Date, Object],
       required: true
     }
+  },
+  components: {
+    DatePicker
   },
   setup(props, { emit }) {
     const renderDateValue = computed({
@@ -43,7 +47,7 @@ export default defineComponent({
   left: 0;
   width: 13.5px;
 }
-div[class*='bo-date-picker'] {
+div[class*='boc-date-picker'] {
   background-color: transparent;
   color: #fff;
   border-radius: 29px;

@@ -1,13 +1,13 @@
 <template>
-  <div class="basic-input" :data-is-full="isFull">
-    <div class="basic-input__prefix" v-if="isPrefix">
-      <slot name="prefix"></slot>
+  <div class="basic-input" :data-is-full="isFull" :data-is-round="isRound">
+    <div class="basic-input__prefix" v-if="$slots.prefix">
+      <slot name="prefix" />
     </div>
     <div class="basic-input__content">
       <input v-model="bindValue" v-bind="$attrs" />
     </div>
-    <div class="basic-input__suffix" v-if="isSuffix">
-      <slot name="suffix"></slot>
+    <div class="basic-input__suffix" v-if="$slots.suffix">
+      <slot name="suffix" />
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default defineComponent({
       type: [String, Number],
       default: ''
     },
+    isRound: { type: Boolean, default: false },
     isFull: {
       type: Boolean,
       default: false
@@ -35,51 +36,41 @@ export default defineComponent({
       get: () => props.modelValue,
       set: (value) => emit('update:modelValue', value)
     })
-    const isPrefix = computed(() => {
-      if (slots['prefix']) {
-        return true
-      } else {
-        return false
-      }
-    })
-    const isSuffix = computed(() => {
-      if (slots['suffix']) {
-        return true
-      } else {
-        return false
-      }
-    })
-    return { bindValue, isPrefix, isSuffix }
+    return { bindValue }
   }
 })
 </script>
 
 <style lang="scss">
 .basic-input {
-  border: 1px solid red;
   display: flex;
+  border: 1px solid black;
   width: 200px;
   height: 30px;
+  justify-content: center;
+  align-items: center;
 
   &[data-is-full='true'] {
     width: 100%;
+  }
+
+  &[data-is-round='true'] {
+    border-radius: 30px;
   }
   &__content {
     width: 100%;
     input {
       width: 100%;
       height: 100%;
-      border: 1px solid black;
       box-sizing: border-box;
+      border: none;
       outline: none;
     }
   }
 
   &__prefix {
-    border: 1px solid blue;
   }
   &__suffix {
-    border: 1px solid green;
   }
 }
 </style>

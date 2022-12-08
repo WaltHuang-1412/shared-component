@@ -1,14 +1,11 @@
-<template lang="pug">
-ElRadioGroup.boc-radio-group(v-bind="$attrs")
-  slot
+<template>
+  <div>123</div>
 </template>
-
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'BOCRadioGroup',
-  inheritAttrs: false,
+  name: 'HomeView',
   setup() {
     return {}
   }

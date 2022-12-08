@@ -1,6 +1,6 @@
 {
   "name": "back-office-component",
-  "version": "0.1.42",
+  "version": "0.1.45",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -58,7 +58,7 @@
     "prettier": "^2.7.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
-    "ts-jest": "^29.0.3",
+    "ts-jest": "28.0.8",
     "typescript": "~4.8.4",
     "vue-cli-plugin-pug": "~2.0.0",
     "vue-cli-plugin-storybook": "^3.0.0-rc.0",

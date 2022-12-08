@@ -1,7 +1,7 @@
-import { computed, inject } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { radioInjectionKey } from './use-group-radio'
 
-interface IProps {
+export interface IProps {
   modelValue?: IRadioType
   value: IRadioType
   label: string | number
@@ -9,7 +9,7 @@ interface IProps {
   disabled?: boolean
 }
 
-interface IEmit {
+export interface IEmit {
   (e: 'update:modelValue', value: IRadioType): void
   (e: 'change', value: IRadioType): void
 }
@@ -19,6 +19,7 @@ export type IRadioType = string | number | boolean
 export default function useRadio(props: IProps, emit: IEmit) {
   const radioGroup = inject(radioInjectionKey, undefined)
   const isGroup = computed(() => !!radioGroup)
+  const radioRef = ref<HTMLInputElement>()
 
   const modelValue_ = computed({
     get() {
@@ -31,11 +32,14 @@ export default function useRadio(props: IProps, emit: IEmit) {
         ? radioGroup!.setModelValue(val)
         : emit('update:modelValue', val)
       emit('change', val)
+
+      radioRef.value!.checked = val === props.value
     }
   })
 
   return {
     modelValue_,
-    radioGroup
+    radioGroup,
+    radioRef
   }
 }

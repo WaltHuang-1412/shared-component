@@ -1,6 +1,7 @@
 import BOCButton from './index.vue'
 import { ref } from 'vue'
 import { Meta, StoryFn } from '@storybook/vue3'
+import { ButtonProps } from 'element-plus'
 
 export default {
   title: 'Common/BOCButton',
@@ -9,6 +10,7 @@ export default {
     type: {
       control: { type: 'select' },
       options: ['primary', 'success', 'warning', 'danger', 'info'],
+      // options: [...buttonProps.type],
       defaultValue: { summary: 'primary' }
     },
     size: {

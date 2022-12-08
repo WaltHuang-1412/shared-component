@@ -1,13 +1,14 @@
-import { InjectionKey, Ref } from 'vue'
+import { InjectionKey } from 'vue'
 import type { IRadioType } from './use-radio'
 
-interface IProps {
+export interface IProps {
   modelValue: IRadioType
   name: string | number
-  disabled: boolean
+  disabled?: boolean
+  radioBgc?: string
 }
 
-interface IInjectionKey extends IProps {
+export interface IInjectionKey extends IProps {
   setModelValue: (val: IRadioType) => void
 }
 

@@ -9,7 +9,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'BOCButton',
-  inheritAttrs: true,
+  inheritAttrs: false,
   props: {
     dataType: {
       type: String,
@@ -45,6 +45,10 @@ export default defineComponent({
       box-shadow: inset 1px 2px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
+    &:focus-visible {
+      outline: none;
+    }
+
     &[data-type='outline-fade'] {
       border: 1px solid #fff;
       background-color: transparent;
@@ -58,6 +62,15 @@ export default defineComponent({
       }
       &:hover {
         opacity: 0.61;
+      }
+    }
+    &[data-type='outline-fade'].is-disabled {
+      opacity: 0.3;
+      font-weight: 400;
+
+      &:hover {
+        color: #fff;
+        background-color: unset;
       }
     }
   }

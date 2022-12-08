@@ -1,18 +1,25 @@
 <template lang="pug">
-.ms-radio
-  .ms-radio-wrapper
-    .ms-radio-input
+.hgs-radio
+  .hgs-radio-wrapper(:disabled="radioGroup?.disabled || disabled")
+    .hgs-radio-input
       input(
+        ref="radioRef"
         type="radio"
         v-model="modelValue_"
         :id="label"
         :value="value"
-        :name="radioGroup.name || name"
-        :disabled="radioGroup.disabled || disabled"
+        :name="radioGroup?.name || name"
+        :disabled="radioGroup?.disabled || disabled"
       )
-      .ms-radio-inner(:class="{checked: modelValue_ === value }")
+      .hgs-radio-inner(
+        :style="`background-color:${renderThemeColor()}`"
+        :disabled="radioGroup?.disabled || disabled"
+      )
     slot
-      label(:for="label") {{ label }}
+      label.hgs-radio-label(
+        :for="label"
+        :disabled="radioGroup?.disabled || disabled"
+      ) {{ label }}
 </template>
 
 <script setup lang="ts">
@@ -21,7 +28,7 @@ import type { IRadioType } from './use-radio'
 import useRadio from './use-radio'
 
 defineComponent({
-  name: 'RADIO',
+  name: 'HGSRadio',
   inheritAttrs: false
 })
 
@@ -32,10 +39,12 @@ const props = withDefaults(
     label: string | number
     name?: string
     disabled?: boolean
+    radioBgc?: string
   }>(),
   {
     modelValue: '',
-    disabled: false
+    disabled: false,
+    radioBgc: '#409eff'
   }
 )
 
@@ -44,11 +53,16 @@ const emit = defineEmits<{
   (e: 'change', value: IRadioType): void
 }>()
 
-const { modelValue_, radioGroup } = useRadio(props, emit)
+const { modelValue_, radioGroup, radioRef } = useRadio(props, emit)
+
+const renderThemeColor = () => {
+  if (!radioRef.value?.checked) return '#fff'
+  return radioGroup?.radioBgc ? radioGroup.radioBgc : props.radioBgc
+}
 </script>
 
 <style lang="scss">
-.ms-radio {
+.hgs-radio {
   display: inline-block;
 
   &-wrapper {
@@ -60,7 +74,6 @@ const { modelValue_, radioGroup } = useRadio(props, emit)
     position: relative;
     display: flex;
     align-items: center;
-    /* width: 14px; */
 
     & > input {
       position: absolute;
@@ -68,6 +81,11 @@ const { modelValue_, radioGroup } = useRadio(props, emit)
       height: 14px;
       z-index: 1;
       opacity: 0;
+      cursor: pointer;
+
+      &[disabled] {
+        cursor: not-allowed;
+      }
     }
   }
 
@@ -75,9 +93,19 @@ const { modelValue_, radioGroup } = useRadio(props, emit)
     position: relative;
     width: 14px;
     height: 14px;
-    background-color: green;
+    background-color: #fff;
     border-radius: 50%;
-    border: 1px solid #505050;
+    border: 1px solid #dcdfe6;
+
+    &[disabled='true'] {
+      background-color: #e4e7ed !important;
+      border-color: #e4e7ed;
+
+      &::after {
+        width: 0px;
+        height: 0px;
+      }
+    }
 
     &::after {
       content: '';
@@ -89,6 +117,17 @@ const { modelValue_, radioGroup } = useRadio(props, emit)
       height: 5px;
       background-color: #fff;
       border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+  &-label {
+    color: inherit;
+    cursor: pointer;
+
+    &[disabled='true'] {
+      color: #a8abb2;
+      cursor: not-allowed;
     }
   }
 

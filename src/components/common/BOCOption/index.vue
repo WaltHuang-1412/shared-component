@@ -1,5 +1,5 @@
 <template lang="pug">
-el-option(v-bind="$attrs")
+el-option.boc-option(v-bind="$attrs")
 </template>
 
 <script lang="ts">

@@ -1,36 +1,27 @@
 <template lang="pug">
-.group-radio
+.group-radio(v-bind="$attrs")
   slot
 </template>
 
 <script setup lang="ts">
-import {
-  defineComponent,
-  defineProps,
-  withDefaults,
-  defineEmits,
-  provide
-} from 'vue'
+import { defineProps, withDefaults, defineEmits, provide } from 'vue'
 import { radioInjectionKey } from './use-group-radio'
 import useGroupRadio from './use-group-radio'
 import type { IRadioType } from './use-radio'
 
-defineComponent({
-  name: 'RadioGroup',
-  inheritAttrs: false
-})
+export interface IProps {
+  modelValue: IRadioType
+  name: string | number
+  disabled?: boolean
+  radioBgc?: string
+}
 
-const props = withDefaults(
-  defineProps<{
-    modelValue: IRadioType
-    name: string | number
-    disabled?: boolean
-  }>(),
-  {
-    modelValue: '',
-    disabled: false
-  }
-)
+const props = withDefaults(defineProps<IProps>(), {
+  modelValue: '',
+  name: '',
+  disabled: false,
+  radioBgc: '#409eff'
+})
 
 const emit = defineEmits<{
   (e: 'update:modelValue', val: IRadioType): void
