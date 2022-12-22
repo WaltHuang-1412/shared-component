@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, PropType } from 'vue'
 
 export default defineComponent({
   name: 'BasicInput',

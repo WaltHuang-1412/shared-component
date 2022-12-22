@@ -4,9 +4,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, defineEmits, provide } from 'vue'
+import { defineProps, defineEmits, provide, reactive, toRefs } from 'vue'
 import { radioInjectionKey } from './use-group-radio'
-import useGroupRadio from './use-group-radio'
 import type { IRadioType } from './use-radio'
 
 export interface IProps {
@@ -16,20 +15,25 @@ export interface IProps {
   radioBgc?: string
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  modelValue: '',
-  name: '',
-  disabled: false,
-  radioBgc: '#409eff'
-})
+const props = defineProps<IProps>()
 
 const emit = defineEmits<{
   (e: 'update:modelValue', val: IRadioType): void
   (e: 'change', val: IRadioType): void
 }>()
 
-const groupRadio = useGroupRadio(props, emit)
-provide(radioInjectionKey, groupRadio)
+const setModelValue = (val: IRadioType) => {
+  emit('update:modelValue', val)
+  emit('change', val)
+}
+
+provide(
+  radioInjectionKey,
+  reactive({
+    ...toRefs(props),
+    setModelValue
+  })
+)
 </script>
 
 <style lang="scss"></style>

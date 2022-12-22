@@ -11,7 +11,7 @@ export interface IEmit {
 }
 export declare type IRadioType = string | number | boolean;
 export default function useRadio(props: IProps, emit: IEmit): {
-    modelValue_: import("vue").WritableComputedRef<IRadioType>;
+    modelValue: import("vue").WritableComputedRef<IRadioType>;
     radioGroup: import("./use-group-radio").IInjectionKey | undefined;
     radioRef: import("vue").Ref<HTMLInputElement | undefined>;
 };

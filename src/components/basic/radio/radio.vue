@@ -5,14 +5,14 @@
       input(
         ref="radioRef"
         type="radio"
-        v-model="modelValue_"
+        v-model="modelValue"
         :id="label"
         :value="value"
         :name="radioGroup?.name || name"
         :disabled="radioGroup?.disabled || disabled"
       )
       .hgs-radio-inner(
-        :style="`background-color:${renderThemeColor()}`"
+        :style="`background-color:${innerBgColor(modelValue, value)};`"
         :disabled="radioGroup?.disabled || disabled"
       )
     slot
@@ -20,7 +20,7 @@
         :for="label"
         :disabled="radioGroup?.disabled || disabled"
       ) {{ label }}
-</template>
+  </template>
 
 <script setup lang="ts">
 import { defineComponent, defineProps, withDefaults, defineEmits } from 'vue'
@@ -42,7 +42,6 @@ const props = withDefaults(
     radioBgc?: string
   }>(),
   {
-    modelValue: '',
     disabled: false,
     radioBgc: '#409eff'
   }
@@ -53,9 +52,9 @@ const emit = defineEmits<{
   (e: 'change', value: IRadioType): void
 }>()
 
-const { modelValue_, radioGroup, radioRef } = useRadio(props, emit)
+const { modelValue, radioRef, radioGroup } = useRadio(props, emit)
 
-const renderThemeColor = () => {
+const innerBgColor = (modelValue: IRadioType, label: string | number) => {
   if (!radioRef.value?.checked) return '#fff'
   return radioGroup?.radioBgc ? radioGroup.radioBgc : props.radioBgc
 }

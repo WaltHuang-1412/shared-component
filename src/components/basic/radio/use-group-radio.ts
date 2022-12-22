@@ -12,7 +12,7 @@ export interface IInjectionKey extends IProps {
   setModelValue: (val: IRadioType) => void
 }
 
-export const radioInjectionKey: InjectionKey<IInjectionKey> = Symbol('radio')
+export const radioInjectionKey: InjectionKey<any> = Symbol('radio')
 
 export default function useGroupRadio(
   props: IProps,

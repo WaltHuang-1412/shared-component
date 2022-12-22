@@ -21,7 +21,7 @@ export default function useRadio(props: IProps, emit: IEmit) {
   const isGroup = computed(() => !!radioGroup)
   const radioRef = ref<HTMLInputElement>()
 
-  const modelValue_ = computed({
+  const modelValue = computed({
     get() {
       return isGroup.value
         ? radioGroup!.modelValue
@@ -38,7 +38,7 @@ export default function useRadio(props: IProps, emit: IEmit) {
   })
 
   return {
-    modelValue_,
+    modelValue,
     radioGroup,
     radioRef
   }

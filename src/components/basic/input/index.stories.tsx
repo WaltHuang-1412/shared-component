@@ -43,8 +43,8 @@ export const Default: StoryFn<IProps> = (props) => {
         <BasicInput
           v-model={inputVModel.value}
           v-slots={{
-            prefix: 1,
-            suffix: 4
+            prefix: 'prefix',
+            suffix: 'suffix'
           }}
           {...resetProps}
         ></BasicInput>
